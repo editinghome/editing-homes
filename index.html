@@ -175,6 +175,7 @@
         }
 
         .btn {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -182,6 +183,7 @@
             width: 100%;
             padding: 16px 28px;
             border-radius: 14px;
+            overflow: hidden;
             background: linear-gradient(
                 45deg, #922fa1 0%, #a21caf 35%, #7a1f8c 70%, #1e3a8a 100%);
             color: #fff;
@@ -193,8 +195,36 @@
             box-shadow:
                 0 0 28px rgba(217, 70, 239, 0.5),
                 0 8px 24px rgba(30, 58, 138, 0.4);
-            animation: pulse 1.8s ease-in-out infinite;
+            animation: ctaGlow 1.6s ease-in-out infinite;
             transition: transform 0.2s ease;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                105deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.08) 35%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(255, 255, 255, 0.08) 65%,
+                transparent 100%
+            );
+            transform: skewX(-20deg);
+            animation: ctaShine 2.4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .btn i,
+        .btn span {
+            position: relative;
+            z-index: 1;
         }
 
         .btn i {
@@ -202,16 +232,29 @@
         }
 
         .btn:hover {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
-        @keyframes pulse {
+        @keyframes ctaGlow {
             0%, 100% {
-                box-shadow: 0 0 28px rgba(217, 70, 239, 0.5), 0 8px 24px rgba(30, 58, 138, 0.4);
+                transform: scale(1);
+                box-shadow:
+                    0 0 18px rgba(217, 70, 239, 0.4),
+                    0 0 36px rgba(168, 85, 247, 0.25),
+                    0 8px 24px rgba(30, 58, 138, 0.35);
             }
             50% {
-                box-shadow: 0 0 42px rgba(217, 70, 239, 0.75), 0 8px 30px rgba(30, 58, 138, 0.55);
+                transform: scale(1.035);
+                box-shadow:
+                    0 0 32px rgba(232, 121, 249, 0.85),
+                    0 0 55px rgba(217, 70, 239, 0.55),
+                    0 10px 28px rgba(30, 58, 138, 0.5);
             }
+        }
+
+        @keyframes ctaShine {
+            0% { left: -120%; }
+            45%, 100% { left: 140%; }
         }
 
         .timer {
@@ -294,7 +337,7 @@
 
             <a class="btn" href="https://t.me/+qDLXIi2NBswzY2U1" target="_blank">
                 <i class="fab fa-telegram-plane"></i>
-                Join Telegram Now
+                <span>Join Telegram Now</span>
             </a>
 
             <div class="timer">
