@@ -355,7 +355,7 @@ src="https://www.facebook.com/tr?id=2135707007160800&ev=PageView&noscript=1"
             </a>
 
             <div class="timer">
-                Redirecting in <span id="count">05</span> seconds...
+                Redirecting in <span id="count">15</span> seconds...
             </div>
 
         </div>
@@ -373,7 +373,7 @@ src="https://www.facebook.com/tr?id=2135707007160800&ev=PageView&noscript=1"
         setInterval(() => {
             time--;
             counter.innerText = time < 10 ? "0" + time : time;
-            if (time <= 15) {
+            if (time <= 0) {
                 window.location.href = "https://t.me/+JTrmHHtTLi9hOWU1";
             }
         }, 1000);
